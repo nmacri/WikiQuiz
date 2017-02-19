@@ -24,8 +24,8 @@ def get_quiz(article_name):
             'numbers': a.quiz.get_random_numbers()
         })
         resp = Response(data_send, status=200, mimetype='application/json')
-    except:
-        resp = Response("ERROR", status=500, mimetype='application/json')
+    except Exception, e:
+        resp = Response("ERROR: %s" % e, status=500, mimetype='application/json')
 
     resp.headers['Access-Control-Allow-Origin'] = "*"
     return resp
